@@ -539,7 +539,7 @@
     tg.expand();
 
 
-    let balance = 11000;
+    let balance = Number(localStorage.getItem("balance")) || 11000;
 
     let bet = 10;
 
@@ -978,11 +978,9 @@
     */
 
     function updateBalance() {
-
-        balanceElement.textContent =
-            balance.toLocaleString("ru-RU");
-
-    }
+    balanceElement.textContent = balance.toLocaleString("ru-RU");
+    localStorage.setItem("balance", balance);
+}
 
 
     /*
