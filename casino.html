@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mini Casino</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, #3b1768, #12091e 65%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game {
+            width: 100%;
+            max-width: 430px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 15px;
+            font-size: 30px;
+        }
+
+        .balance {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .machine {
+            padding: 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .slots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .slot {
+            width: 90px;
+            height: 90px;
+            background: white;
+            color: #111;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            box-shadow: inset 0 -6px 0 #ccc;
+        }
+
+        .spinning {
+            animation: spin 0.12s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translateY(-8px);
+            }
+            50% {
+                transform: translateY(8px);
+            }
+            100% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .bet {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .spin-button {
+            width: 100%;
+            padding: 18px;
+            border: 0;
+            border-radius: 15px;
+            background: #ffb300;
+            color: #211500;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #b87500;
+        }
+
+        .spin-button:active {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #b87500;
+        }
+
+        .spin-button:disabled {
+            opacity: 0.5;
+        }
+
+        .result {
+            min-height: 30px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .win {
+            animation: win 0.5s ease;
+        }
+
+        @keyframes win {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.25);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>🎰 Mini Casino</h1>
+
+    <div class="balance">
+        🪙 <span id="balance">1000</span>
+    </div>
+
+    <div class="machine">
+
+        <div class="slots">
+            <div class="slot" id="slot1">🍒</div>
+            <div class="slot" id="slot2">🍋</div>
+            <div class="slot" id="slot3">🍉</div>
+        </div>
+
+        <div class="bet">
+            Ставка: 🪙 10
+        </div>
+
+        <button class="spin-button" id="spin">
+            🎰 SPIN
+        </button>
+
+        <div class="result" id="result"></div>
+
+    </div>
+
+</div>
+
+<script>
+    const tg = window.Telegram.WebApp;
+
+    tg.ready();
+    tg.expand();
+
+    let balance = 1000;
+    const bet = 10;
+
+    const symbols = [
+        "🍒",
+        "🍋",
+        "🍊",
+        "🍉",
+        "⭐",
+        "💎",
+        "7️⃣"
+    ];
+
+    const balanceElement = document.getElementById("balance");
+    const resultElement = document.getElementById("result");
+
+    const slots = [
+        document.getElementById("slot1"),
+        document.getElementById("slot2"),
+        document.getElementById("slot3")
+    ];
+
+    const spinButton = document.getElementById("spin");
+
+
+    function randomSymbol() {
+        return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+
+
+    function spin() {
+
+        if (balance < bet) {
+            resultElement.textContent = "❌ Недостаточно монет";
+            return;
+        }
+
+        balance -= bet;
+        updateBalance();
+
+        spinButton.disabled = true;
+        resultElement.textContent = "";
+
+        slots.forEach(slot => {
+            slot.classList.add("spinning");
+        });
+
+
+        // Останавливаем барабаны
+        setTimeout(() => {
+
+            slots[0].textContent = randomSymbol();
+
+        }, 700);
+
+
+        setTimeout(() => {
+
+            slots[1].textContent = randomSymbol();
+
+        }, 1000);
+
+
+        setTimeout(() => {
+
+            slots[2].textContent = randomSymbol();
+
+            finishSpin();
+
+        }, 1300);
+    }
+
+
+    function finishSpin() {
+
+        slots.forEach(slot => {
+            slot.classList.remove("spinning");
+        });
+
+        const a = slots[0].textContent;
+        const b = slots[1].textContent;
+        const c = slots[2].textContent;
+
+
+        let win = 0;
+
+
+        // Три одинаковых
+        if (a === b && b === c) {
+
+            if (a === "7️⃣") {
+                win = 500;
+            } else if (a === "💎") {
+                win = 300;
+            } else {
+                win = 100;
+            }
+
+        }
+
+        // Два одинаковых
+        else if (a === b || b === c || a === c) {
+
+            win = 30;
+
+        }
+
+
+        if (win > 0) {
+
+            balance += win;
+
+            resultElement.textContent =
+                `🎉 Вы выиграли 🪙 ${win}!`;
+
+            resultElement.classList.add("win");
+
+            setTimeout(() => {
+                resultElement.classList.remove("win");
+            }, 500);
+
+        } else {
+
+            resultElement.textContent = "😢 Не повезло";
+
+        }
+
+
+        updateBalance();
+
+        spinButton.disabled = false;
+
+
+        if (tg.HapticFeedback) {
+            tg.HapticFeedback.notificationOccurred(
+                win > 0 ? "success" : "error"
+            );
+        }
+    }
+
+
+    function updateBalance() {
+        balanceElement.textContent = balance;
+    }
+
+
+    spinButton.addEventListener("click", spin);
+
+</script>
+
+</body>
+</html>
