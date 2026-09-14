@@ -1,107 +1,192 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Кликер</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Games</title>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #39206b,
+                    #12091d 70%
+                );
+
+            color: white;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #15151f;
-            color: white;
-            font-family: Arial, sans-serif;
         }
 
-        .game {
+        .menu {
+
+            width: 100%;
+            max-width: 430px;
+
+            padding: 30px;
+
             text-align: center;
         }
 
-        .balance {
-            font-size: 40px;
+        .title {
+
+            font-size: 36px;
             font-weight: bold;
-            margin-bottom: 50px;
+
+            margin-bottom: 10px;
         }
 
-        .coin {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
+        .subtitle {
+
+            color: #aaa;
+
+            font-size: 16px;
+
+            margin-bottom: 40px;
+        }
+
+        .game-button {
+
+            width: 100%;
+
+            padding: 20px;
+
+            margin-bottom: 15px;
+
             border: none;
 
-            background: #ffc107;
+            border-radius: 18px;
 
-            font-size: 90px;
+            font-size: 22px;
+            font-weight: bold;
+
+            color: white;
 
             cursor: pointer;
 
-            box-shadow: 0 10px 0 #b88600;
+            transition: 0.15s;
 
-            transition: 0.08s;
+            box-shadow:
+                0 7px 20px rgba(0,0,0,0.35);
         }
 
-        .coin:active {
-            transform: translateY(8px) scale(0.96);
-            box-shadow: 0 2px 0 #b88600;
+        .game-button:active {
+
+            transform: scale(0.96);
+
         }
 
-        .text {
-            margin-top: 40px;
-            color: #aaa;
+        .clicker {
+
+            background: linear-gradient(
+                135deg,
+                #ffb300,
+                #ff7b00
+            );
+
         }
+
+        .casino {
+
+            background: linear-gradient(
+                135deg,
+                #d62cff,
+                #712cff
+            );
+
+        }
+
+        .emoji {
+
+            font-size: 32px;
+
+            margin-right: 8px;
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-<div class="game">
+<div class="menu">
 
-    <div class="balance">
-        🪙 <span id="balance">0</span>
+    <div class="title">
+        🎮 MY GAMES
     </div>
 
-    <button class="coin" onclick="clickCoin()">
-        🪙
+    <div class="subtitle">
+        Выбери игру
+    </div>
+
+
+    <!-- КЛИКЕР -->
+
+    <button
+        class="game-button clicker"
+        onclick="openGame('clicker.html')"
+    >
+
+        <span class="emoji">🪙</span>
+
+        Кликер
+
     </button>
 
-    <div class="text">
-        Тапай на монету
-    </div>
+
+    <!-- КАЗИНО -->
+
+    <button
+        class="game-button casino"
+        onclick="openGame('casino.html')"
+    >
+
+        <span class="emoji">🎰</span>
+
+        Казино
+
+    </button>
 
 </div>
 
+
 <script>
 
-    let balance = 0;
-
-    function clickCoin() {
-
-        balance++;
-
-        document.getElementById("balance").innerText = balance;
-
-    }
-
-    // Telegram Mini App
     const tg = window.Telegram.WebApp;
 
     tg.ready();
+
     tg.expand();
+
+
+    function openGame(page) {
+
+        window.location.href = page;
+
+    }
 
 </script>
 
 </body>
+
 </html>
-```
