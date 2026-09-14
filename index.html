@@ -1,0 +1,107 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Кликер</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #15151f;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .game {
+            text-align: center;
+        }
+
+        .balance {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .coin {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: none;
+
+            background: #ffc107;
+
+            font-size: 90px;
+
+            cursor: pointer;
+
+            box-shadow: 0 10px 0 #b88600;
+
+            transition: 0.08s;
+        }
+
+        .coin:active {
+            transform: translateY(8px) scale(0.96);
+            box-shadow: 0 2px 0 #b88600;
+        }
+
+        .text {
+            margin-top: 40px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <div class="balance">
+        🪙 <span id="balance">0</span>
+    </div>
+
+    <button class="coin" onclick="clickCoin()">
+        🪙
+    </button>
+
+    <div class="text">
+        Тапай на монету
+    </div>
+
+</div>
+
+<script>
+
+    let balance = 0;
+
+    function clickCoin() {
+
+        balance++;
+
+        document.getElementById("balance").innerText = balance;
+
+    }
+
+    // Telegram Mini App
+    const tg = window.Telegram.WebApp;
+
+    tg.ready();
+    tg.expand();
+
+</script>
+
+</body>
+</html>
+```
