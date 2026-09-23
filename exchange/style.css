@@ -108,3 +108,23 @@ h1 {
     margin-top: 16px;
     min-height: 20px;
 }
+#backButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    padding: 10px 16px;
+
+    border: 1px solid #333333;
+    border-radius: 8px;
+
+    background: #1e1e1e;
+    color: #ffffff;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#backButton:active {
+    transform: scale(0.97);
+}
