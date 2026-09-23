@@ -80,6 +80,27 @@ h1 {
 #tapButton:active {
     transform: scale(0.93);
 }
+/* Кнопка "Назад" */
+.backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    padding: 10px 16px;
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    background: #1b1b1b;
+    color: #fff;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Эффект при наведении */
+.backButton:hover {
+    background: #292929;
+}
 
 /* Награда */
 
