@@ -17,27 +17,96 @@
     <button id="backButton">← Назад</button>
 
 
-    <main class="shop">
+    <!-- Основная часть магазина -->
+<main class="shop">
 
-        <h1>Магазин</h1>
+    <!-- Общий баланс кристаллов -->
+<div class="balance">
+    💎 <span id="crystalsBalance">0</span>
+</div>
 
+    <!-- Заголовок магазина -->
+    <h1>Магазин</h1>
+
+    <!-- Контейнер со всеми товарами -->
+    <div class="products">
+
+        <!-- Первая карточка товара -->
         <div class="product">
 
+            <!-- Картинка товара -->
             <img src="qa.png" alt="Один в поле воин">
 
+            <!-- Название товара -->
             <h2>Один в поле воин</h2>
 
+            <!-- Цена товара -->
             <p class="price">
                 100 💎
             </p>
 
-            <button id="buyButton">Купить</button>
+            <!--
+                data-price хранит цену товара.
+                JS будет брать её автоматически.
+            -->
+            <button class="buyButton" data-price="100">
+                Купить
+            </button>
 
         </div>
 
-        <p id="message"></p>
+        <!-- Вторая карточка товара -->
+<div class="product">
 
-    </main>
+    <!-- Картинка второго товара -->
+    <img src="qa1.png" alt="голубая лагуна">
+
+    <!-- Название второго товара -->
+    <h2>Второй товар</h2>
+
+    <!-- Цена второго товара -->
+    <p class="price">
+        500 💎
+    </p>
+
+    <!-- Кнопка покупки -->
+    <button class="buyButton" data-price="500">
+        Купить
+    </button>
+
+</div>
+
+        <!-- Третья карточка товара -->
+<div class="product">
+
+    <!-- Картинка товара -->
+    <img src="qa2.png" alt="самозванец">
+
+    <!-- Название товара -->
+    <h2>самозванец</h2>
+
+    <!-- Цена товара -->
+    <p class="price">
+        1000 💎
+    </p>
+
+    <!-- Кнопка покупки -->
+    <button class="buyButton" data-price="1000">
+        Купить
+    </button>
+
+</div>
+
+        <!--
+            ЗДЕСЬ ПОТОМ МОЖНО ДОБАВЛЯТЬ НОВЫЕ КАРТОЧКИ
+        -->
+
+    </div>
+
+    <!-- Сообщение после покупки -->
+    <p id="message"></p>
+
+</main>
 
     <script src="script.js"></script>
 
