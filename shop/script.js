@@ -1,44 +1,122 @@
-// Находим кнопку "Назад"
-const backButton = document.getElementById("backButton");
+// =============================
+// ОТОБРАЖЕНИЕ БАЛАНСА
+// =============================
 
-// Возвращаемся в меню
-backButton.addEventListener("click", function () {
-    window.location.href = "../menu/index.html";
-});
-// Находим кнопку покупки
-const buyButton = document.getElementById("buyButton");
+// Находим поле баланса
+const crystalsBalance = document.getElementById("crystalsBalance");
 
-// Находим поле для сообщений
+// Получаем общий баланс кристаллов
+let currentCrystals = Number(localStorage.getItem("zxcv")) || 0;
+
+// Показываем баланс
+crystalsBalance.textContent = currentCrystals;
+
+// =============================
+// КНОПКИ ПОКУПКИ
+// =============================
+
+// Получаем все кнопки "Купить"
+const buyButtons = document.querySelectorAll(".buyButton");
+
+// Поле для сообщений
 const message = document.getElementById("message");
-
-// Цена товара в кристаллах
-const productPrice = 100;
 
 // Ключ кристаллов в общем хранилище
 const crystalsKey = "zxcv";
 
-// Обработчик нажатия на кнопку "Купить"
-buyButton.addEventListener("click", function () {
 
-    // Получаем текущий баланс кристаллов
-    let crystals = Number(localStorage.getItem(crystalsKey)) || 0;
+// =============================
+// ОБРАБОТКА ТОВАРОВ
+// =============================
 
-    // Проверяем, хватает ли кристаллов
-    if (crystals < productPrice) {
+buyButtons.forEach(function (button, index) {
 
-        // Если кристаллов недостаточно
-        message.textContent = "Недостаточно кристаллов!";
+    // Уникальный ключ для этого товара
+    const productKey = "shop_product_" + index;
 
-        return;
+    // Проверяем, был ли товар уже куплен
+    const alreadyBought = localStorage.getItem(productKey);
+
+    // Если товар уже куплен
+    if (alreadyBought === "true") {
+
+        button.textContent = "Куплено";
+        button.disabled = true;
+
     }
 
-    // Списываем 100 кристаллов
-    crystals -= productPrice;
 
-    // Сохраняем новый баланс
-    localStorage.setItem(crystalsKey, crystals);
+    // =============================
+    // ПОКУПКА
+    // =============================
 
-    // Показываем сообщение об успешной покупке
-    message.textContent = "Покупка успешно совершена!";
+    button.addEventListener("click", function () {
+
+        // Если товар уже куплен — ничего не делаем
+        if (localStorage.getItem(productKey) === "true") {
+            return;
+        }
+
+
+        // Получаем цену товара
+        const productPrice = Number(button.dataset.price);
+
+
+        // Получаем текущий баланс кристаллов
+        let crystals = Number(localStorage.getItem(crystalsKey)) || 0;
+
+
+        // Проверяем баланс
+        if (crystals < productPrice) {
+
+            message.textContent = "Недостаточно кристаллов!";
+
+            return;
+        }
+
+
+        // =============================
+        // СПИСЫВАЕМ КРИСТАЛЛЫ
+        // =============================
+
+        crystals -= productPrice;
+
+        localStorage.setItem(crystalsKey, crystals);
+
+        // Обновляем отображение баланса
+        crystalsBalance.textContent = crystals;
+
+
+        // =============================
+        // СОХРАНЯЕМ ПОКУПКУ
+        // =============================
+
+        localStorage.setItem(productKey, "true");
+
+
+        // Меняем кнопку
+        button.textContent = "Куплено";
+
+        // Запрещаем повторное нажатие
+        button.disabled = true;
+
+
+        // Сообщение
+        message.textContent = "Покупка успешно совершена!";
+    });
+
+});
+
+
+// =============================
+// КНОПКА "НАЗАД"
+// =============================
+
+const backButton = document.getElementById("backButton");
+
+// Возвращаемся в меню
+backButton.addEventListener("click", function () {
+
+    window.location.href = "../menu/index.html";
 
 });
