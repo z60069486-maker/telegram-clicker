@@ -1,3 +1,10 @@
+// Находим кнопку "Назад"
+const backButton = document.getElementById("backButton");
+
+// Возвращаемся в меню
+backButton.addEventListener("click", function () {
+    window.location.href = "../menu/index.html";
+});
 // Находим кнопку покупки
 const buyButton = document.getElementById("buyButton");
 
