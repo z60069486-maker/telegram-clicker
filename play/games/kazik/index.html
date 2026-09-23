@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kazik</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="kazik">
+
+        <!-- Баланс -->
+        <div class="balance">
+            <span>💎</span>
+            <span id="zxcv">0</span>
+        </div>
+
+        <h1>Kazik</h1>
+
+        <!-- Слоты -->
+        <div class="slots">
+
+            <div class="slot" id="slot1">❤️</div>
+            <div class="slot" id="slot2">♠️</div>
+            <div class="slot" id="slot3">👑</div>
+
+        </div>
+
+        <!-- Ставка -->
+        <div class="bet">
+
+            <button id="minusBet">−</button>
+
+            <input
+                type="number"
+                id="betInput"
+                value="1"
+                min="1"
+            >
+
+            <button id="plusBet">+</button>
+
+        </div>
+
+        <!-- Кнопка игры -->
+        <button id="spinButton">
+            Крутить
+        </button>
+
+        <!-- Результат -->
+        <div id="result"></div>
+
+    </main>
+
+    <!-- Общий storage проекта -->
+    <script src="../../../common/storage.js"></script>
+
+    <!-- Логика Kazik -->
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* Страница Играть */
+#playPage {
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #111;
+    color: #fff;
+}
+
+/* Заголовок */
+#playPage h1 {
+    margin: 20px 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Общий баланс */
+#playPage .balance {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: fit-content;
+    padding: 10px 16px;
+
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #1a1a1a;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Сетка игр */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+/* Карточка игры */
+.game-card {
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 16px;
+    background: #1a1a1a;
+    text-align: center;
+}
+
+/* Иконка */
+.game-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+/* Название */
+.game-card h2 {
+    margin: 8px 0;
+    font-size: 21px;
+}
+
+/* Описание */
+.game-card p {
+    margin: 0 0 16px;
+    color: #aaa;
+}
+
+/* Кнопка */
+.game-card button {
+    width: 100%;
+    padding: 11px 16px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #fff;
+    color: #111;
+
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Недоступная кнопка */
+.game-card button:disabled {
+    background: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* Заглушки */
+.game-card.placeholder {
+    opacity: 0.6;
+}

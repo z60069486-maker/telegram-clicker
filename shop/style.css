@@ -1,0 +1,83 @@
+/* Сбрасываем стандартные отступы */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Основной фон и общий стиль страницы */
+body {
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* Основной контейнер магазина */
+.shop {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* Заголовок магазина */
+.shop h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+/* Карточка товара */
+.product {
+    background: #1b1b1b;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #333;
+}
+
+/* Картинка товара */
+.product img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* Название товара */
+.product h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Цена товара */
+.price {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Кнопка покупки */
+#buyButton {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    color: #111;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Эффект при наведении на кнопку */
+#buyButton:hover {
+    opacity: 0.85;
+}
+
+/* Сообщение после покупки или при ошибке */
+#message {
+    margin-top: 20px;
+    font-size: 16px;
+}

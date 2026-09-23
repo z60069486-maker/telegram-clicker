@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Играть</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="playPage">
+
+        <div class="balance">
+            <span>💎</span>
+            <span id="zxcv">0</span>
+        </div>
+
+        <h1>Играть</h1>
+
+        <div class="games-grid">
+
+            <!-- Kazik -->
+            <div class="game-card" id="kazikGame">
+                <div class="game-icon">🎰</div>
+                <h2>Kazik</h2>
+                <p>Казино</p>
+                <button id="kazikButton">Играть</button>
+            </div>
+
+            <!-- Заглушка -->
+            <div class="game-card placeholder">
+                <div class="game-icon">?</div>
+                <h2>Скоро</h2>
+                <p>Новая игра</p>
+                <button disabled>Недоступно</button>
+            </div>
+
+            <!-- Заглушка -->
+            <div class="game-card placeholder">
+                <div class="game-icon">?</div>
+                <h2>Скоро</h2>
+                <p>Новая игра</p>
+                <button disabled>Недоступно</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

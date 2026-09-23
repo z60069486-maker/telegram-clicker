@@ -1,0 +1,165 @@
+/* Общая страница */
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: #111;
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* Основной блок */
+.kazik {
+    width: min(100% - 30px, 450px);
+    margin: 0 auto;
+    padding: 25px 15px;
+
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+/* Баланс */
+.balance {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Заголовок */
+h1 {
+    margin: 25px 0;
+
+    font-size: 30px;
+}
+
+
+/* Слоты */
+.slots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90px;
+    height: 90px;
+
+    background: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 14px;
+
+    font-size: 42px;
+}
+
+
+/* Ставка */
+.bet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+.bet button {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #444;
+    border-radius: 10px;
+
+    background: #1a1a1a;
+    color: #fff;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+#betInput {
+    width: 100px;
+    height: 42px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #444;
+    border-radius: 10px;
+
+    background: #1a1a1a;
+    color: #fff;
+
+    text-align: center;
+    font-size: 17px;
+}
+
+
+/* Кнопка Крутить */
+#spinButton {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #111;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+#spinButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Результат */
+#result {
+    min-height: 24px;
+    margin-top: 18px;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* Телефон */
+@media (max-width: 400px) {
+
+    .slot {
+        width: 75px;
+        height: 75px;
+
+        font-size: 35px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}

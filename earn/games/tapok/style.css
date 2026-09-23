@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+
+    font-family: Arial, sans-serif;
+
+    /* Цвет фона */
+    background: #111111;
+
+    /* Цвет текста */
+    color: white;
+}
+
+/* Баланс */
+
+.balance {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Основная часть */
+
+.game {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+}
+
+/* Заголовок */
+
+h1 {
+    font-size: 32px;
+}
+
+/* Область нажатия */
+
+.tap-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Кнопка */
+
+#tapButton {
+    width: 220px;
+    height: 220px;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 32px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    transition: transform 0.08s ease;
+}
+
+/* Эффект нажатия */
+
+#tapButton:active {
+    transform: scale(0.93);
+}
+
+/* Награда */
+
+.reward {
+    font-size: 20px;
+    font-weight: 600;
+}

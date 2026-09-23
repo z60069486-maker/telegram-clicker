@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обменник</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="exchange">
+        <h1>Обменник</h1>
+
+        <div class="balance">
+            <p>🪙: <span id="coins">0</span></p>
+            <p>💎: <span id="diamonds">0</span></p>
+        </div>
+
+        <section class="exchange-box">
+            <h2>Обмен</h2>
+
+            <div class="exchange-row">
+                <div class="currency">
+                    <span>Монеты</span>
+                    <input
+                        type="number"
+                        id="coinsInput"
+                        min="0"
+                        placeholder="0"
+                    >
+                </div>
+
+                <span class="arrow">→</span>
+
+                <div class="currency">
+                    <span>Алмазы</span>
+                    <div id="diamondsOutput">0</div>
+                </div>
+            </div>
+
+            <button id="exchangeButton">Обменять</button>
+        </section>
+
+        <p id="message"></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

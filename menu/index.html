@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Чтобы страница нормально отображалась на телефоне -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scarpia</title>
+
+    <!-- Подключаем оформление меню -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Название приложения -->
+    <h1>дайте денях</h1>
+
+
+    <!-- Кнопка "Заработать" -->
+    <button id="earnButton">
+        ЗАРАБОТАТЬ
+        <span id="coinsBalance">0 🪙</span>
+    </button>
+
+
+    <!-- Кнопка "Играть" -->
+    <button id="playButton">
+        ИГРАТЬ
+        <span id="gemsBalance">0 💎</span>
+    </button>
+
+
+    <!-- Кнопка "Обменник" -->
+    <button id="exchangeButton">
+        ОБМЕННИК
+        <span>🪙 ⇄ 💎</span>
+    </button>
+
+
+    <!-- Кнопка "Магазин" -->
+    <button id="shopButton">
+        МАГАЗИН
+        <span>🛒</span>
+    </button>
+
+    <!-- Общее хранилище валют -->
+    <script src="../common/storage.js"></script>
+
+    <!-- JavaScript меню -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
