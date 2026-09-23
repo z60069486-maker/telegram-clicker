@@ -80,3 +80,9 @@ exchangeButton.addEventListener("click", () => {
 
     message.textContent = `Получено кристаллов: ${diamondsToAdd}`;
 });
+
+const backButton = document.getElementById("backButton");
+
+backButton.addEventListener("click", () => {
+    window.location.href = "../menu/index.html";
+});
