@@ -42,8 +42,3 @@ buyButton.addEventListener("click", function () {
     message.textContent = "Покупка успешно совершена!";
 
 });
-const backButton = document.getElementById("backButton");
-
-backButton.addEventListener("click", () => {
-    window.location.href = "../menu/index.html";
-});
