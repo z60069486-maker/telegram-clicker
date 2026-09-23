@@ -92,3 +92,24 @@
 .game-card.placeholder {
     opacity: 0.6;
 }
+/* Кнопка назад */
+.backButton {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    color: #fff;
+    text-decoration: none;
+
+    padding: 8px 12px;
+
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.backButton:hover {
+    background: #222;
+}
