@@ -10,7 +10,7 @@ const exchangeButton = document.getElementById("exchangeButton");
 const message = document.getElementById("message");
 
 // Курс: 100 монет = 1 кристалл
-const EXCHANGE_RATE = 100;
+const EXCHANGE_RATE = 1;
 
 // Получить баланс
 function getBalance(key) {
